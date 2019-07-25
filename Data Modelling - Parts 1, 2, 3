@@ -1,0 +1,331 @@
+Part 1
+
+Question 1 - Customers with orders:
+
+customers table:
+id - integer    <--- Primary key
+email - text
+mailing address - text
+name - text
+
+
+orders table:
+id - integer    <--- Primary key
+order number - integer
+date - text or integer
+customer_id - integer	<--- Foreign key.
+
+
+Relationships:
+Each order is purchased by one customer.
+One customer purchases many differnt orders.
+Therefore there is a 1-to-many relationship between them.
+
+
+
+
+Question 2 - People with addresses
+
+people table:
+id - integer    <--- Primary key
+name - text
+age - integer
+residence_id - integer		<--- Foreign key.
+
+
+residences table:
+id - integer    <--- Primary key
+address - text
+year_built - integer
+cities_id - integer		<--- Foreign key.
+
+
+cities table:
+id - integer    <--- Primary key
+name - text
+year_founded - integer
+province_id - integer		<--- Foreign key.
+
+
+provinces table:
+id - integer    <--- Primary key
+name - text
+year_founded - integer
+country_id - integer		<--- Foreign key.
+
+
+countries table:
+id - integer    <--- Primary key
+name - text
+year_founded - integer
+national_animal - text
+
+
+Relationships:
+One country can have many provinces.
+One province can have many cities.
+One city can have many residences.
+One residence can have many people.
+There are several 1-to-many relationships between each table.
+
+
+
+
+Question 3 - A Library system:
+
+loans table:
+id - integer    <--- Primary key
+due_date - text or integer
+renewed - boolean
+book_id - integer		<--- Foreign key.
+patron_id - integer		<--- Foreign key.
+
+
+patrons table:
+id - integer    <--- Primary key
+name - text
+card_number - integer
+email - text
+
+
+holds table:
+id - integer    <--- Primary key
+date_placed - text or integer
+book_id - integer		<--- Foreign key.
+patron_id - integer		<--- Foreign key.
+
+
+books table:
+id - integer    <--- Primary key
+title - text
+isbn - text
+authors_id - integer		<--- Foreign key.
+
+
+authors table:
+id - integer    <--- Primary key
+name - text
+
+
+Relationships:
+One author can have many books.
+One book can have many loans.
+One book can have many holds.
+One patron can have many holds.
+There are several 1-to-many relationships between each table.
+
+
+
+
+Part 2:
+
+Question 1 - Plays:
+
+roles table:
+id - integer    <--- Primary key
+actor_id - text     <--- Foreign key
+
+
+actors table:
+id - integer    <--- Primary key
+play_id - text     <--- Foreign key
+
+
+directors table:
+id - integer    <--- Primary key
+name - text
+play_id - text  <--- Foreign key
+
+
+plays table:
+id - integer    <--- Primary key
+name - text
+
+
+
+
+Question 2 - Vet clinic:
+
+owners table:
+id - integer    <--- Primary key
+name - text
+address - text
+
+
+breeds table:
+id - integer    <--- Primary key
+name - text
+
+
+pets table:
+id - integer    <--- Primary key
+name - text
+owner_id - integer		<--- Foreign key
+breed_id - integer		<--- Foreign key
+
+
+appointments table:
+id - integer    <--- Primary key
+date - text or integer
+time - integer
+veternarian_id      <--- Foreign key
+pet_id - integer		<--- Foreign key
+
+
+veterinarians table:
+id - integer    <--- Primary key
+name - text
+clinic_id - integer		<--- Foreign key
+
+
+clinics table:
+id - integer    <--- Primary key
+name - text
+address - text
+
+
+
+
+Question 3 - Restaurants:
+
+chef table:
+id - integer    <--- Primary key
+name - text
+restaurant_id - integer		<--- Foreign key
+
+
+restaurant table:
+id - integer    <--- Primary key
+name - text
+address - text
+accessible - boolean
+
+
+review table:
+id - integer    <--- Primary key
+title - text
+date - text or integer
+rating - integer
+restaurant_id - integer		<--- Foreign key
+critic_id - integer		<--- Foreign key
+
+
+critic table:
+id - integer    <--- Primary key
+name - text
+publication_id - integer		<--- Foreign key
+
+
+publication table:
+id - integer    <--- Primary key
+name - text
+location - text
+
+
+
+
+Part 3:
+
+Question 1 - Forum:
+
+User:       Relationships:       Entitites:
+users       posts                threads          
+                                 forum
+
+
+users table:
+id - integer    <--- Primary key
+name - text
+join_date - text
+online - boolean
+
+
+posts table:
+id - integer    <--- Primary key.
+title - text
+content - text
+users_id - integer  <--- Foreign key
+threads_id - integer    <--- Foreign key
+
+
+threads table:
+id - integer    <--- Primary key
+name - text
+description - text
+forum_id - integer    <--- Foreign key
+
+
+forum table:
+id - integer    <--- Primary key
+name - text
+description - text
+
+
+
+
+Question 2 - Dentist:
+
+User:       Relationships:       Entitites:
+client      appointments         dentists          
+                                 office
+
+
+clients table:
+id - integer    <--- Primary key
+name - text
+address - text
+appointments_id    <--- Foreign key
+
+
+appointments table:
+id - integer    <--- Primary key
+date - text or integer
+time - integer
+client_id - integer    <--- Foreign key
+dentist_id - integer    <--- Foreign key
+
+
+dentists table:
+id - integer    <--- Primary key
+name - text
+office_id - integer   <--- Foreign key
+
+
+office table:
+id - integer    <--- Primary key
+name - text
+address - text
+
+
+
+
+Question 3 - EventBrite:
+
+User:       Relationships:       Entitites:
+client      tickets_purchased    event          
+            tickets_sold
+
+
+clients table:
+id - integer    <--- Primary key
+username - text
+real_name - text
+password - text
+
+
+tickets_purchased table:
+id - integer    <--- Primary key
+client_id - integer   <--- Foreign key
+event_id - integer   <--- Foreign key
+
+
+tickets_sold table:
+id - integer    <--- Primary key
+client_id - integer   <--- Foreign key
+event_id - integer   <--- Foreign key
+
+
+events_table:
+id - integer    <--- Primary key
+name - text
+date - text or integer
